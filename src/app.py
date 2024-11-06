@@ -367,26 +367,6 @@ x_test_sel_with_outliers_mMScale = SelectFeatures(x_test_with_outliers_mMScaler,
 x_train_sel_without_outliers_mMScale = SelectFeatures(x_train_without_outliers_mMScaler, y_train, "x_train_without_outliers_mMScaler")
 x_test_sel_without_outliers_mMScale = SelectFeatures(x_test_with_outliers_mMScaler, y_test, "x_test_with_outliers_mMScaler")
 
-#Para acabara añadimos el target a los datasets.
-
-target = "charges"
-def AgreeTarget(dataset, y, target = target):
-    dataset[target] = list(y) #Si no le pones el list le pasa los indices y se crear valores NaN
-    return dataset
-
-AgreeTarget(x_train_sel_with_outliers, y_train)
-AgreeTarget(x_test_sel_with_outliers, y_test)
-AgreeTarget(x_train_sel_without_outliers, y_train)
-AgreeTarget(x_test_sel_without_outliers, y_test)
-AgreeTarget(x_train_sel_with_outliers_standarscale, y_train)
-AgreeTarget(x_test_sel_with_outliers_standarscale, y_test)
-AgreeTarget(x_train_sel_without_outliers_standarscale, y_train)
-AgreeTarget(x_test_sel_without_outliers_standarscale, y_test)
-AgreeTarget(x_train_sel_with_outliers_mMScale, y_train)
-AgreeTarget(x_test_sel_with_outliers_mMScale, y_test)
-AgreeTarget(x_train_sel_without_outliers_mMScale, y_train)
-AgreeTarget(x_test_sel_without_outliers_mMScale, y_test)
-
 #Para acabar nos guardamos los datasets en un csv
 
 def DataToCsv(dataset, filename):
