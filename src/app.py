@@ -422,7 +422,7 @@ def Training(traindataset, testdataset):
         y_test_predict = model.predict(testdataset[i])
 
         parameters.append({"Intercepter (a)" : float(model.intercept_), "Coeficient (b1 ~ b5)" : list(model.coef_)})
-        result = {"index:" : i, "Parameters" : {"MAE" : float(mean_squared_error(y_train, y_train_predict)), "RMSE" : r2_score(y_train, y_train_predict)}}
+        result = {"index:" : i, "Parameters" : {"MSE" : float(mean_squared_error(y_train, y_train_predict)), "R2" : r2_score(y_train, y_train_predict)}}
         results.append(result)
         models.append(model)
 
