@@ -402,7 +402,7 @@ def Training(traindataset, testdataset):
         y_test_predict = model.predict(testdataset[i])
 
         parameters.append({"Intercepter (a)" : float(model.intercept_), "Coeficient (b1 ~ b5)" : list(model.coef_)})
-        result = {"index:" : i, "Parameters" : {"MSE" : float(mean_squared_error(y_train, y_train_predict)), "R2" : r2_score(y_train, y_train_predict)}}
+        result = {"index:" : i, "Parameters_train" : {"MSE" : float(mean_squared_error(y_train, y_train_predict)), "R2" : r2_score(y_train, y_train_predict)}, "Parameters_test" : {"MSE" : float(mean_squared_error(y_test, y_test_predict)), "R2" : r2_score(y_test, y_test_predict)}}
         results.append(result)
         models.append(model)
 
@@ -413,4 +413,10 @@ def Training(traindataset, testdataset):
 
 results, models = Training(traindfs, testdfs)
 
-results
+#Como no hay hiperparametros, guardamos los mejores modelos.
+
+clf_standarscale = models[2]
+clf_mMScale = models[5]
+
+dump(clf_standarscale, open("../models/lineal_regresion_standarscale.sav", "wb"))
+dump(clf_mMScale, open("../models/lineal_regresion_mMScale.sav", "wb"))
